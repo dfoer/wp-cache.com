@@ -1,5 +1,5 @@
 === WP-Cache.com ===
-Contributors: phatjay, keha76
+Contributors: keha76
 Tags: cache, wp cache, caching, wp super cache, w3tc
 Requires at least: 3.3
 Tested up to: 3.8.1
@@ -14,6 +14,8 @@ The easiest, fastest, most light-weight WordPress Cache plugin available.
 <a target="_blank" href="http://wp-cache.com/">WP-Cache.com</a>, the easiest and fastest WordPress Cache plugin. WP-Cache.com, it just works! 
 
 This project is maintained on <a target="_blank" href="https://github.com/icryptic/WP-Cache.com">Github</a>.
+
+This plugin was original founded by Jason Jersey (<a target="_blank" href="https://twitter.com/degersey">@degersey</a>), however Kenth Hagström (<a target="_blank" href="https://twitter.com/keha76">@keha76</a>) will now be taking over development of WP-Cache.com along with leading the projects future.
 
 == Installation ==
 

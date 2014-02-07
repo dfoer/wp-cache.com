@@ -15,7 +15,7 @@ The easiest, fastest, most light-weight WordPress Cache plugin available.
 
 This project is maintained on <a target="_blank" href="https://github.com/icryptic/WP-Cache.com">Github</a>.
 
-This plugin was original founded by Jason Jersey (<a target="_blank" href="https://twitter.com/degersey">@degersey</a>), however Kenth Hagström (<a target="_blank" href="https://twitter.com/keha76">@keha76</a>) will now be taking over development of WP-Cache.com along with leading the projects future.
+This plugin was originally founded by Jason Jersey (<a target="_blank" href="https://twitter.com/degersey">@degersey</a>), however Kenth Hagström (<a target="_blank" href="https://twitter.com/keha76">@keha76</a>) will now be taking over development of WP-Cache.com along with leading the projects future.
 
 == Installation ==
 

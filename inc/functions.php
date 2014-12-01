@@ -233,10 +233,27 @@ border-top: 1px solid #e1e1e1;
 
 		public function Detect_New_Post(){
 			if(isset($this->Options->WPCache_NewPost) && isset($this->Options->WPCache_Status)){
-				add_filter ('publish_post', array($this, 'deleteCache'));
-				add_filter ('delete_post', array($this, 'deleteCache'));
-				add_filter ('publish_page', array($this, 'deleteCache'));
-				add_filter ('delete_page', array($this, 'deleteCache'));
+				add_filter( 'publish_post',          array( $this, 'deleteCache' ) );
+				add_filter( 'delete_post',           array( $this, 'deleteCache' ) );
+				add_filter( 'publish_page',          array( $this, 'deleteCache' ) );
+				add_filter( 'delete_page',           array( $this, 'deleteCache' ) );
+				add_filter( 'switch_theme',          array( $this, 'deleteCache' ) );
+				add_filter( 'wp_create_nav_menu',    array( $this, 'deleteCache' ) );
+				add_filter( 'wp_update_nav_menu',    array( $this, 'deleteCache' ) );
+				add_filter( 'wp_delete_nav_menu',    array( $this, 'deleteCache' ) );
+				add_filter( 'save_post',             array( $this, 'deleteCache' ) );
+				add_filter( 'trackback_post',        array( $this, 'deleteCache' ) );
+				add_filter( 'pingback_post',         array( $this, 'deleteCache' ) );
+				add_filter( 'comment_post',          array( $this, 'deleteCache' ) );
+				add_filter( 'edit_comment',          array( $this, 'deleteCache' ) );
+				add_filter( 'delete_comment',        array( $this, 'deleteCache' ) );
+				add_filter( 'wp_set_comment_status', array( $this, 'deleteCache' ) );
+				add_filter( 'create_term',           array( $this, 'deleteCache' ) );
+				add_filter( 'edit_terms',            array( $this, 'deleteCache' ) );
+				add_filter( 'delete_term',           array( $this, 'deleteCache' ) );
+				add_filter( 'add_link',              array( $this, 'deleteCache' ) );
+				add_filter( 'edit_link',             array( $this, 'deleteCache' ) );
+				add_filter( 'delete_link',           array( $this, 'deleteCache' ) );
 			}
 		}
 

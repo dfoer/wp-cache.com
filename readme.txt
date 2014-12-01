@@ -39,6 +39,9 @@ No. WP-Cache.com does not cache the wp-admin backend. In fact, WP-Cache.com does
 
 == Changelog ==
 
+= 1.1.1 =
+* Improved detection of when to delete cache data
+
 = 1.1.0 =
 * Fixed errors in translation files.
 

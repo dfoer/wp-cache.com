@@ -486,16 +486,17 @@ border-top: 1px solid #e1e1e1;
 					"<IfModule mod_rewrite.c>"."\n".
 					"RewriteEngine On"."\n".
 					"RewriteBase /"."\n".
+					'RewriteCond  "%{HTTP_USER_AGENT}" "!(Mobile|Android|Silk/|Kindle|BlackBerry|Opera Mini|OperaMobi)"'."\n".
 					"RewriteCond %{HTTP_HOST} ^(www\.)?".$this->WP_blog_Url." [NC]"."\n".
 					"RewriteCond %{REQUEST_METHOD} !POST"."\n".
 					"RewriteCond %{QUERY_STRING} !.*=.*"."\n".
 					"RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$"."\n".
 					'RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]'."\n".
 					'RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]'."\n".
-					'RewriteCond  "%{HTTP_USER_AGENT}"  "!(iPhone|Blackberry|Android|Mobile|Silk/|Kindle|Opera Mini|OperaMobi)"'."\n".
 					"RewriteCond %{DOCUMENT_ROOT}/".$this->getRewriteBase()."wp-content/cache/".$this->WP_blog_Path."/".$this->getRewriteBase()."desktop/$1/index.html -f"."\n".
 					'RewriteRule ^(.*) "/'.$this->getRewriteBase().'wp-content/cache/'.$this->WP_blog_Path.'/'.$this->getRewriteBase().'desktop/$1/index.html" [L]'."\n".
 					"\n".
+					'RewriteCond  "%{HTTP_USER_AGENT}" "(Mobile|Android|Silk/|Kindle|BlackBerry|Opera Mini|OperaMobi)"'."\n".
 					"RewriteCond %{HTTP_HOST} ^(www\.)?".$this->WP_blog_Url." [NC]"."\n".
 					"RewriteCond %{REQUEST_METHOD} !POST"."\n".
 					"RewriteCond %{QUERY_STRING} !.*=.*"."\n".

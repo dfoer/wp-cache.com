@@ -34,6 +34,16 @@
 			add_action('admin_print_footer_scripts', array($this, 'Add_Quicktags_Editor_Button'));
 			add_action('init', array($this, 'wpcache_buttonhooks'));
 		}
+		
+		public function deviceFolder(){
+			if(wp_is_mobile()){
+				return 'mobile';
+			}
+			else
+			{
+				return 'desktop';
+			}
+		}
 
 		public function checkShortCode($content){
 			preg_match("/\[NoCache\]/", $content, $NoCache);
@@ -476,14 +486,25 @@ border-top: 1px solid #e1e1e1;
 					"<IfModule mod_rewrite.c>"."\n".
 					"RewriteEngine On"."\n".
 					"RewriteBase /"."\n".
+					'RewriteCond  "%{HTTP_USER_AGENT}" "!(Mobile|Android|Silk/|Kindle|BlackBerry|Opera Mini|OperaMobi)"'."\n".
 					"RewriteCond %{HTTP_HOST} ^(www\.)?".$this->WP_blog_Url." [NC]"."\n".
 					"RewriteCond %{REQUEST_METHOD} !POST"."\n".
 					"RewriteCond %{QUERY_STRING} !.*=.*"."\n".
 					"RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$"."\n".
 					'RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]'."\n".
 					'RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]'."\n".
-					"RewriteCond %{DOCUMENT_ROOT}/".$this->getRewriteBase()."wp-content/cache/".$this->WP_blog_Path."/".$this->getRewriteBase()."$1/index.html -f"."\n".
-					'RewriteRule ^(.*) "/'.$this->getRewriteBase().'wp-content/cache/'.$this->WP_blog_Path.'/'.$this->getRewriteBase().'$1/index.html" [L]'."\n".
+					"RewriteCond %{DOCUMENT_ROOT}/".$this->getRewriteBase()."wp-content/cache/".$this->WP_blog_Path."/".$this->getRewriteBase()."desktop/$1/index.html -f"."\n".
+					'RewriteRule ^(.*) "/'.$this->getRewriteBase().'wp-content/cache/'.$this->WP_blog_Path.'/'.$this->getRewriteBase().'desktop/$1/index.html" [L]'."\n".
+					"\n".
+					'RewriteCond  "%{HTTP_USER_AGENT}" "(Mobile|Android|Silk/|Kindle|BlackBerry|Opera Mini|OperaMobi)"'."\n".
+					"RewriteCond %{HTTP_HOST} ^(www\.)?".$this->WP_blog_Url." [NC]"."\n".
+					"RewriteCond %{REQUEST_METHOD} !POST"."\n".
+					"RewriteCond %{QUERY_STRING} !.*=.*"."\n".
+					"RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$"."\n".
+					'RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]'."\n".
+					'RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]'."\n".
+					"RewriteCond %{DOCUMENT_ROOT}/".$this->getRewriteBase()."wp-content/cache/".$this->WP_blog_Path."/".$this->getRewriteBase()."mobile/$1/index.html -f"."\n".
+					'RewriteRule ^(.*) "/'.$this->getRewriteBase().'wp-content/cache/'.$this->WP_blog_Path.'/'.$this->getRewriteBase().'mobile/$1/index.html" [L]'."\n".
 					"</IfModule>"."\n".
 					"# END WPCache"."\n";
 			return $data;
@@ -529,7 +550,7 @@ border-top: 1px solid #e1e1e1;
 			}else if($this->checkHtml($buffer)){
 				return $buffer;
 			}else{
-				$cachFilePath = $this->WP_con_DIR."/cache/".$this->WP_blog_Path.$_SERVER["REQUEST_URI"];
+				$cachFilePath = $this->WP_con_DIR."/cache/".$this->WP_blog_Path."/".$this->deviceFolder().$_SERVER["REQUEST_URI"];
 				$content = $this->cacheDate($buffer);
 				$this->createFolder($cachFilePath, $content);
 
